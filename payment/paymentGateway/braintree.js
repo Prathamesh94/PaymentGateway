@@ -20,7 +20,6 @@ function transaction(request) {
                     cvv: data.cvv
                 }
             });
-            //console.log(gatewayResponse);
             if (gatewayResponse.success === true) {
                 resolve({ result: true, data: gatewayResponse })
             }

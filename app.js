@@ -10,7 +10,6 @@ app.get('/', function(req, res) {
 });
 app.post('/payment', async (req, res,next) => {
     //American Express Credit Cards Starts with 34 or 37
-    console.log(req.body)
     const isAMEX = (req.body.creditCard.startsWith('34') || req.body.creditCard.startsWith('37')) ? true : false
     let gatewayResponse
     if (req.body.currency != 'USD' && isAMEX) {

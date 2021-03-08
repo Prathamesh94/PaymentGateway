@@ -11,7 +11,6 @@ if(process.env.persistTransactions === 'true'){
 }
 function storeTransaction(paymentGateway, gatewayResponse, orderDetails) {
   return new Promise((resolve, reject) => {
-    //console.log(`INSERT INTO transactions(paymentGateway,gatewayResponse,customer_name,price,currency) VALUES('${paymentGateway}','${JSON.stringify(gatewayResponse)}','${orderDetails.customer_full_name}','${orderDetails.price}','${orderDetails.currency}')`)
     connection.query(`INSERT INTO transactions(paymentGateway,gatewayResponse,customer_name,price,currency) VALUES('${paymentGateway}','${JSON.stringify(gatewayResponse)}','${orderDetails.customer_full_name}','${orderDetails.price}','${orderDetails.currency}')`, function (error, results, fields) {
       if (error) reject(error);
       resolve(results)

@@ -40,6 +40,7 @@ function transaction(request) {
                     resolve({ result: true, data: gatewayResponse })
                 }
                 else {
+                    console.log(gatewayResponse)
                     resolve({ result: false, reason: gatewayResponse.L_LONGMESSAGE0, data: gatewayResponse })
                 }
             });
