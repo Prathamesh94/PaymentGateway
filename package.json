@@ -1,0 +1,35 @@
+{
+  "name": "test-payment-gateway",
+  "version": "1.0.0",
+  "description": "Payment Gateway which supports payment through Paypal and Braintree",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha --exit --timeout 15000",
+    "start": "node app.js 5000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prathamesh94/PaymentGateway.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Prathamesh94/PaymentGateway/issues"
+  },
+  "homepage": "https://github.com/Prathamesh94/PaymentGateway#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "braintree": "^3.2.1",
+    "chai": "^4.3.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "paypal-rest-sdk": "^1.8.1",
+    "querystring": "^0.2.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "mocha": "^8.3.1"
+  }
+}

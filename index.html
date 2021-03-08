@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script> 
+        // wait for the DOM to be loaded 
+        $(document).ready(function() { 
+            // bind 'myForm' and provide a simple callback function 
+            $('#payment_order_form').ajaxForm(function(res) { 
+                console.log(res)
+                if(res.success){
+                    alert("Payment Successful");
+                }else if(res.reason){
+                    alert("Payment Failed due to "+res.reason);
+                }
+                else{
+                    alert("Payment Failed");
+                }
+                 
+            }); 
+        }); 
+    </script> 
+    <title>Payment Gateway</title>
+</head>
+<body>
+    <div id='payment_order_form'>
+        <h3>Order Details</h6>
+            <form id="payment_order_form" action="http://localhost:5000/payment" method="POST">
+                <label for="price">Price</label>
+                <div id="price"><input type="number" placeholder="100.0" name="price"></div>
+                <label for="currency">Currency</label>
+                <div>
+                    <input list="currency" name="currency" required>
+                    <datalist id="currency">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="THB">THB</option>
+                        <option value="HKD">HKD</option>
+                        <option value="SGD">SGD</option>
+                        <option value="AUD">AUD</option>
+                    </datalist>
+                </div>
+                <label for="customer_full_name">Full Name</label>
+                <div id="customer_full_name">
+                    <input type="text"  name="customer_full_name" required>
+                </div>
+                <div>
+                    <div id='payment_form'>
+                        <h3>Payment Details</h6>
+                            <input type="hidden" name="payment_method_nonce" >
+                            <label for="holder-name">Name on Credit Card</label>
+                            <div id="holder-name"><input type="text" placeholder="Name on Credit Card" maxlength="30"  name="holder-name" required>
+                            </div>
+                            <label for="card-number">Card Number</label>
+                            <div id="card-number"><input type="text" pattern="\d*" placeholder="8881 2545 2545 2245" maxlength="19" name="creditCard" required>
+                            </div>
+                            <label for="cvv">CVV</label>
+                            <div id="cvv"><input type="text" pattern="\d*" placeholder="123" minlength="3" maxlength="4" name ='cvv'required></div>
+                            <label for="expirationMonth">Expiration Month</label>
+                            <div id="expirationMonth"><input type="text" pattern="\d*" placeholder="month" name="expirationMonth" maxlength="2" required></div>
+                            <label for="expirationYear">Expiration Year</label>
+                            <div id="expirationYear"><input type="text" pattern="\d*" placeholder="year" name="expirationYear"   minlength="4" maxlength="4" required></div>
+                            <br>
+                            <input id="submit" name="pay" type="submit" value="Pay" />
+            </form>
+            <div>
+</body>
+</form>
+
+</html>
